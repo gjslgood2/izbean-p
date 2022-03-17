@@ -8,6 +8,15 @@ import java.util.Map;
 
 public class PostDao extends AbstractDao {
 
+    private static PostDao postDao;
+
+    public static PostDao getInstance() {
+        if (postDao == null)
+            postDao = new PostDao();
+
+        return postDao;
+    }
+
     private static final String GET_POST_SQL = "select * from board where id = ?";
     private static final String GET_POSTS_SQL = "select * from board order by id desc";
     private static final String INSERT_POST_SQL = "insert into board(title, note, reg_id, reg_dt)" +

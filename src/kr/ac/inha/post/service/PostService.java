@@ -6,11 +6,14 @@ import java.util.List;
 import java.util.Map;
 
 public class PostService {
+    private static PostService postService;
 
-    private PostDao postDao;
+    private final PostDao postDao = PostDao.getInstance();
 
-    public PostService() {
-        postDao = new PostDao();
+    public static PostService getInstance() {
+        if (postService == null)
+            postService = new PostService();
+        return postService;
     }
 
     public List<Map<String, String>> getPosts() {

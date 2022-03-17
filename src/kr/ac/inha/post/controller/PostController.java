@@ -10,11 +10,7 @@ import java.io.IOException;
 
 public class PostController extends HttpServlet {
 
-	private PostService postService;
-
-	public PostController() {
-		postService = new PostService();
-	}
+	private final PostService postService = PostService.getInstance();
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
